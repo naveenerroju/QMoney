@@ -31,7 +31,7 @@ public class PortfolioManagerApplication {
 
     public static List<String> debugOutputs() {
 
-        String valueOfArgument0 = "trades.json";
+        String valueOfArgument0 = "sampletrades.json";
         String resultOfResolveFilePathArgs0 =
                 "resources/sampletrades.json";
         String toStringOfObjectMapper = "com.fasterxml.jackson.databind.ObjectMapper@6150c3ec";
@@ -138,6 +138,7 @@ public class PortfolioManagerApplication {
         RestTemplate restTemplate = new RestTemplate();
         String apiUrl = prepareUrl(trade, endDate, token);
         TiingoCandle[] candles = restTemplate.getForObject(apiUrl, TiingoCandle[].class);
+        assert candles != null;
         return Arrays.asList(candles);
     }
 
@@ -155,6 +156,7 @@ public class PortfolioManagerApplication {
             validateDate(trade.getPurchaseDate(), historicalDate);
             String url = prepareUrl(trade, historicalDate, token);
             TiingoCandle[] candle = restTemplate.getForObject(url, TiingoCandle[].class);
+            assert candle != null;
             annualisedReturn
                     .add(calculateAnnualizedReturns(LocalDate.parse(historicalDate), trade, candle[0].getOpen(), candle[candle.length - 1].getClose()));
 
@@ -167,7 +169,7 @@ public class PortfolioManagerApplication {
 
     public static AnnualizedReturn calculateAnnualizedReturns(LocalDate endDate, PortfolioTrade trade,
                                                               Double buyPrice, Double sellPrice) {
-        double numberOfDays = (double) ChronoUnit.DAYS.between(trade.getPurchaseDate(), endDate);
+        double numberOfDays = ChronoUnit.DAYS.between(trade.getPurchaseDate(), endDate);
         double numberOfYears = numberOfDays / 365;
         Double totalReturn = (sellPrice - buyPrice) / buyPrice;
         Double annualizedReturn = Math.pow(1 + totalReturn, 1.0 / numberOfYears) - 1;

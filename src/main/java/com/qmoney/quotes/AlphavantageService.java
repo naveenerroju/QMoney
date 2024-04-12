@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.qmoney.dto.AlphavantageCandle;
 import com.qmoney.dto.AlphavantageDailyResponse;
@@ -18,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class AlphavantageService implements StockQuotesService {
 
-    public static final String token = "V5O9I6T8VQOBLVTH";
+    public static final String token = "";
     public static final String function = "TIME_SERIES_DAILY";
     private RestTemplate restTemplate;
 
@@ -46,16 +45,13 @@ public class AlphavantageService implements StockQuotesService {
                 stocks.add(candle);
             }
         }
-        return stocks.stream().sorted(Comparator.comparing(Candle::getDate))
-                .collect(Collectors.toList());
-
+        return stocks.stream().sorted(Comparator.comparing(Candle::getDate)).toList();
 
     }
 
     protected String buildUri(String symbol) {
-        return "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" + symbol
-                + "&output=full&apikey=V5O9I6T8VQOBLVTH";
-
+        return "https://www.alphavantage.co/query?function=" + function + "&symbol=" + symbol
+                + "&output=full&apikey=" + token;
 
     }
 

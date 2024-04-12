@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Stock Portfolio Analyzer is a Java project built using Gradle in IntelliJ IDEA. This project allows users to analyze stock portfolios using data from external services such as Tiingo and Alpha Vantage. The user can choose which service to use via a service factory.
+QMoney, is a Java project built using Gradle in IntelliJ IDEA. This project allows users to analyze stock portfolios using data from external services such as Tiingo and Alpha Vantage. The user can choose which service to use via a service factory.
 
 ## Features
 
@@ -16,7 +16,8 @@ The Stock Portfolio Analyzer is a Java project built using Gradle in IntelliJ ID
 1. **Clone the Repository:**
    git clone https://github.com/naveenerroju/QMoney
 
-2. **Import Project in IntelliJ IDEA:**
+2. **Import Project in IntelliJ IDEA (Optional):**
+
 - Open IntelliJ IDEA.
 - Select "Open" from the main menu.
 - Navigate to the directory where you cloned the repository and select the `build.gradle` file.

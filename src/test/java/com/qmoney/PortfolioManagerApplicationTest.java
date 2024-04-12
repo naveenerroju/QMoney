@@ -234,7 +234,7 @@ class PortfolioManagerApplicationTest {
     @Test
     void mainCalculateAnnualReturn() throws Exception {
         //given
-        String filename = "trades.json";
+        String filename = "sampletrades.json";
         //when
         List<AnnualizedReturn> result = PortfolioManagerApplication
                 .mainCalculateSingleReturn(new String[]{filename, "2019-12-12"});

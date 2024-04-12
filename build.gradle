@@ -2,16 +2,32 @@ plugins {
     id 'java'
 }
 
-group 'org.example'
+group 'org.qmoney'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
+//mainClassName = 'QMoney.src.main.java.com.qmoney.PortfolioManagerApplication.java'
+
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // https://mvnrepository.com/artifact/org.springframework/spring-web
+    implementation 'org.springframework:spring-web:5.3.18'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2'
+
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-jul', version: '2.12.1'
+    implementation group: 'org.slf4j', name: 'jul-to-slf4j', version: '1.7.28'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    // https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.0.0'
 }
 
 test {
